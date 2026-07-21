@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { formatarEuros } from "@/lib/precos";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminClientesPage() {
   const clientes = await prisma.user.findMany({
     where: { role: "CLIENTE" },
@@ -21,6 +23,7 @@ export default async function AdminClientesPage() {
           <thead className="bg-areia-100 text-left">
             <tr>
               <th className="p-3">Nome</th>
+              <th className="p-3">Empresa</th>
               <th className="p-3">Email</th>
               <th className="p-3">Telefone</th>
               <th className="p-3">Encomendas</th>
@@ -36,6 +39,7 @@ export default async function AdminClientesPage() {
               return (
                 <tr key={c.id} className="border-t border-areia-100">
                   <td className="p-3 text-tinta-900">{c.nome}</td>
+                  <td className="p-3 text-tinta-500">{c.empresaNome ?? "—"}</td>
                   <td className="p-3 text-tinta-500">{c.email}</td>
                   <td className="p-3 text-tinta-500">{c.telefone ?? "—"}</td>
                   <td className="p-3">{c.encomendas.length}</td>

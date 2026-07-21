@@ -19,6 +19,7 @@ export default function RegistoPage() {
       nome: form.get("nome"),
       email: form.get("email"),
       password: form.get("password"),
+      empresaNome: form.get("empresaNome") || undefined,
       telefone: form.get("telefone") || undefined,
     };
 
@@ -54,6 +55,7 @@ export default function RegistoPage() {
 
       <form onSubmit={submeter} className="space-y-4">
         <input name="nome" placeholder="Nome" required className="w-full border border-areia-300 rounded-md p-3" />
+        <input name="empresaNome" placeholder="Empresa (opcional)" className="w-full border border-areia-300 rounded-md p-3" />
         <input name="email" type="email" placeholder="Email" required className="w-full border border-areia-300 rounded-md p-3" />
         <input name="telefone" placeholder="Telefone (opcional)" className="w-full border border-areia-300 rounded-md p-3" />
         <input name="password" type="password" placeholder="Password (mín. 8 caracteres)" required minLength={8} className="w-full border border-areia-300 rounded-md p-3" />

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
@@ -5,7 +7,8 @@ import { z } from "zod";
 
 const registoSchema = z.object({
   nome: z.string().min(2),
-  email: z.string().email(),
+  empresaNome: z.string().trim().min(2).max(160).optional(),
+  email: z.string().trim().toLowerCase().email(),
   password: z.string().min(8),
   telefone: z.string().optional(),
 });
@@ -24,6 +27,7 @@ export async function POST(req: Request) {
   const user = await prisma.user.create({
     data: {
       nome: dados.nome,
+      empresaNome: dados.empresaNome,
       email: dados.email,
       passwordHash,
       role: "CLIENTE",

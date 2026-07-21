@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { formatarEuros } from "@/lib/precos";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminProdutosPage() {
   const produtos = await prisma.produto.findMany({
     include: { categoria: { include: { parent: true } } },

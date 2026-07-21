@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { formatarEuros } from "@/lib/precos";
 import SeletorEstadoEncomenda from "@/components/SeletorEstadoEncomenda";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminEncomendasPage() {
   const encomendas = await prisma.encomenda.findMany({
     include: { user: true, itens: { include: { produto: true } } },
@@ -25,7 +27,7 @@ export default async function AdminEncomendasPage() {
                     {enc.user.nome} · {enc.user.email} · {enc.user.empresaNome ?? "—"}
                   </p>
                   <p className="text-sm text-tinta-500">
-                    {enc.createdAt.toLocaleDateString("pt-PT")} · {formatarEuros(Number(enc.total))}
+                    {enc.createdAt.toLocaleDateString("pt-PT")} · {formatarEuros(Number(enc.total))} · {enc.metodoEntrega === "LEVANTAMENTO" ? "Levantamento" : enc.metodoEntrega === "ENTREGA_LOJA" ? "Entrega própria" : "Transportadora"}
                   </p>
                 </div>
                 <SeletorEstadoEncomenda id={enc.id} estadoAtual={enc.estado} />

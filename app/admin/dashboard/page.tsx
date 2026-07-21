@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { formatarEuros } from "@/lib/precos";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 const ESTADO_LABEL: Record<string, string> = {
   PENDENTE: "Pendente",
   PAGA: "Paga",

@@ -1,9 +1,73 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-areia-50 text-tinta-900 font-sans;
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { @apply bg-calcario-50 text-grafite-900 font-sans antialiased; }
+::selection { background: #D98D67; color: white; }
+@layer components {
+  .container-site { @apply mx-auto w-full max-w-[1380px] px-5 sm:px-8 lg:px-12; }
+  .btn-primary { @apply inline-flex items-center justify-center rounded-full bg-grafite-900 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-barro-600; }
+  .btn-secondary { @apply inline-flex items-center justify-center rounded-full border border-grafite-900 px-6 py-3 text-sm font-semibold transition hover:bg-grafite-900 hover:text-white; }
+  .eyebrow { @apply text-xs font-bold uppercase tracking-[0.22em] text-barro-600; }
+}
+
+@layer components {
+  .hero-modern { @apply relative min-h-[640px] overflow-hidden rounded-[2rem] bg-grafite-900 shadow-soft; }
+  .trust-strip { @apply grid overflow-hidden rounded-3xl border border-calcario-200 bg-white shadow-soft sm:grid-cols-2 xl:grid-cols-4; }
+  .trust-item { @apply flex gap-3 border-b border-calcario-200 p-5 last:border-0 sm:[&:nth-child(odd)]:border-r xl:border-b-0 xl:border-r xl:last:border-r-0; }
+  .trust-item b { @apply block text-sm; }
+  .trust-item p { @apply mt-1 text-xs leading-5 text-grafite-500; }
+  .trust-check { @apply grid h-7 w-7 shrink-0 place-items-center rounded-full bg-folha-500 text-xs font-bold text-white; }
+  .section-heading { @apply flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between; }
+  .section-heading h2 { @apply mt-3 font-display text-4xl font-bold tracking-[-.04em] sm:text-5xl; }
+  .section-heading > p { @apply max-w-md text-sm leading-6 text-grafite-500; }
+  .room-card { @apply relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-calcario-100 shadow-soft; }
+  .room-card img { @apply h-full w-full object-cover transition duration-700 group-hover:scale-105; }
+  .room-overlay { @apply absolute inset-0 bg-gradient-to-t from-grafite-900/85 via-transparent to-transparent; }
+  .room-copy { @apply absolute inset-x-0 bottom-0 p-6 text-white; }
+  .room-copy p { @apply text-xs text-white/65; }
+  .room-copy h3 { @apply mt-1 font-display text-2xl font-bold; }
+  .room-copy span { @apply mt-4 inline-block text-sm font-semibold opacity-0 transition group-hover:opacity-100; }
+  .product-card { @apply block; }
+  .product-image { @apply relative aspect-[4/5] overflow-hidden rounded-3xl bg-calcario-100; }
+  .product-image img { @apply h-full w-full object-cover transition duration-700 group-hover:scale-105; }
+  .product-badge { @apply absolute left-3 top-3 rounded-full bg-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider; }
+  .product-favorite { @apply absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white text-xl shadow; }
+  .product-arrow { @apply grid h-9 w-9 place-items-center rounded-full border border-calcario-300 transition group-hover:border-grafite-900 group-hover:bg-grafite-900 group-hover:text-white; }
+  .editorial-card { @apply rounded-[2rem] border border-calcario-200 bg-white p-7 transition hover:-translate-y-1 hover:shadow-soft; }
+  .editorial-card span { @apply text-xs font-bold text-barro-600; }
+  .editorial-card h3 { @apply mt-8 font-display text-2xl font-bold; }
+  .editorial-card p { @apply mt-3 text-sm leading-6 text-grafite-500; }
+  .checkout-card { @apply flex gap-4 rounded-[2rem] border border-calcario-200 bg-white p-5 shadow-soft sm:gap-6 sm:p-7; }
+  .step-number { @apply grid h-9 w-9 shrink-0 place-items-center rounded-full bg-grafite-900 text-sm font-bold text-white; }
+  .checkout-title { @apply font-display text-2xl font-bold; }
+  .checkout-help { @apply mt-1 text-sm text-grafite-500; }
+  .delivery-option { @apply flex cursor-pointer items-start gap-3 rounded-2xl border border-calcario-300 p-4 transition has-[:checked]:border-barro-500 has-[:checked]:bg-barro-500/5 has-[:checked]:ring-1 has-[:checked]:ring-barro-500; }
+  .delivery-option input { @apply mt-1; }
+  .delivery-option b { @apply block; }
+  .delivery-option small { @apply mt-1 block leading-5 text-grafite-500; }
+  .payment-option { @apply flex cursor-pointer items-center gap-2 rounded-2xl border border-calcario-300 p-4 font-semibold has-[:checked]:border-barro-500 has-[:checked]:ring-1 has-[:checked]:ring-barro-500; }
+  .product-detail { @apply rounded-2xl border border-calcario-200 bg-white; }
+  .product-detail summary { @apply cursor-pointer list-none px-5 py-4 font-semibold; }
+  .product-detail div { @apply border-t border-calcario-200 px-5 py-4 text-sm leading-6 text-grafite-500; }
+  .legal-page { @apply container-site max-w-4xl py-16; }
+  .legal-page h1 { @apply mt-3 font-display text-4xl font-bold tracking-[-.04em] sm:text-5xl; }
+  .legal-page h2 { @apply mt-10 font-display text-2xl font-bold; }
+  .legal-page p { @apply mt-4 leading-8 text-grafite-500; }
+  .legal-note { @apply mt-10 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm leading-6 text-amber-900; }
+}
+
+
+@layer components {
+  .admin-shell { @apply min-h-[calc(100vh-112px)] bg-calcario-100/70; }
+  .admin-wrap { @apply container-site grid gap-6 py-8 lg:grid-cols-[230px_1fr]; }
+  .admin-sidebar { @apply h-fit rounded-3xl border border-calcario-200 bg-white p-4 shadow-soft lg:sticky lg:top-28; }
+  .admin-link { @apply flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-semibold text-grafite-700 transition hover:bg-calcario-100 hover:text-grafite-900; }
+  .admin-main { @apply min-w-0 rounded-3xl border border-calcario-200 bg-white p-5 shadow-soft sm:p-8; }
+  .metric { @apply rounded-3xl border border-calcario-200 bg-white p-5; }
+  .status-pill { @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-bold; }
+  .table-wrap { @apply overflow-x-auto rounded-2xl border border-calcario-200; }
 }

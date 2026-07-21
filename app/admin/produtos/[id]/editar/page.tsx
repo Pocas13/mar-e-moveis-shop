@@ -2,8 +2,11 @@ import { prisma } from "@/lib/prisma";
 import FormularioProduto from "@/components/FormularioProduto";
 import { notFound } from "next/navigation";
 
-export default async function EditarProdutoPage({ params }: { params: { id: string } }) {
-  const produto = await prisma.produto.findUnique({ where: { id: params.id } });
+export const dynamic = "force-dynamic";
+
+export default async function EditarProdutoPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const produto = await prisma.produto.findUnique({ where: { id } });
   if (!produto) notFound();
 
   return (

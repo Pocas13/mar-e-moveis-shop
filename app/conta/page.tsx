@@ -5,6 +5,8 @@ import { formatarEuros } from "@/lib/precos";
 import { redirect } from "next/navigation";
 import BotaoReencomendar from "@/components/BotaoReencomendar";
 
+export const dynamic = "force-dynamic";
+
 const ESTADO_LABEL: Record<string, string> = {
   PENDENTE: "Pendente",
   PAGA: "Paga",

@@ -5,6 +5,8 @@ import { formatarEuros } from "@/lib/precos";
 import LinhaCarrinho from "@/components/LinhaCarrinho";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function CarrinhoPage() {
   const session = await getServerSession(authOptions);
 

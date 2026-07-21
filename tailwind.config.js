@@ -4,32 +4,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        areia: {
-          50: "#FAF8F3",
-          100: "#F2EFE7",
-          200: "#E6E0D2",
-          300: "#D5CBB5",
-        },
-        tinta: {
-          500: "#66716D",
-          700: "#33443F",
-          900: "#1E2A2A",
-        },
-        mare: {
-          500: "#3A7D77",
-          600: "#2C625D",
-          700: "#234E4A",
-        },
-        prata: {
-          400: "#B7C3C0",
-          500: "#9FB0AC",
-          600: "#7E938E",
-        },
+        areia: { 50: "#FBFAF7", 100: "#F3F0E9", 200: "#E7E0D4", 300: "#D5C9B8" },
+        tinta: { 500: "#6B6B66", 700: "#3B3B37", 900: "#171815" },
+        mare: { 500: "#C86E45", 600: "#A95331", 700: "#823E27" },
+        prata: { 400: "#D5C9B8", 500: "#B8AA98", 600: "#8F8170" },
+        calcario: { 50: "#FBFAF7", 100: "#F3F0E9", 200: "#E7E0D4", 300: "#D5C9B8" },
+        grafite: { 500: "#6B6B66", 700: "#3B3B37", 900: "#171815" },
+        barro: { 400: "#D98D67", 500: "#C86E45", 600: "#A95331", 700: "#823E27" },
+        folha: { 500: "#71806B", 700: "#4F5C4B" },
       },
       fontFamily: {
-        display: ["'Fraunces'", "serif"],
-        sans: ["'Inter'", "sans-serif"],
+        display: ["'Space Grotesk'", "sans-serif"],
+        sans: ["'DM Sans'", "sans-serif"],
       },
+      boxShadow: { soft: "0 18px 45px rgba(23,24,21,.08)" },
     },
   },
   plugins: [],
