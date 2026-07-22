@@ -346,3 +346,16 @@ model IntegrationJob {
 
   @@index([estado, executarApos])
 }
+
+model SageConnection {
+  id           String   @id @default("principal")
+  accessToken  String
+  refreshToken String
+  expiresAt    DateTime
+  scope        String?
+  businessId   String?
+  businessName String?
+  lastError    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
