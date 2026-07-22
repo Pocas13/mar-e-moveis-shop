@@ -1,65 +1,69 @@
-# Correção e arranque no Windows
+# Instalação e atualização no Windows
 
-## 1. Substituir os ficheiros
+## Requisitos
 
-Extraia este ZIP para uma pasta nova. Não copie `node_modules` nem `.next` do projeto antigo. Pode consultar o `.env` antigo para recuperar chaves externas, mas crie primeiro um `.env` novo com o script abaixo.
+- Node.js 20 ou superior.
+- npm 10 ou superior.
+- PostgreSQL em execução.
+- Base de dados `mar_e_moveis_shop`.
 
-Requisitos: Node.js 20 ou superior e PostgreSQL em execução.
+## Preparar o ambiente
 
-## 2. Confirmar a base de dados no pgAdmin
+1. Copiar `.env.example` para `.env` se ainda não existir.
+2. Corrigir `DATABASE_URL`, `NEXTAUTH_URL` e `NEXTAUTH_SECRET`.
+3. Manter Stripe, Sage e Resend vazios enquanto não estiverem configurados.
 
-No pgAdmin:
+O `.env` nunca deve ser enviado para Git ou incluído em ZIPs partilhados.
 
-1. Confirme que consegue abrir o servidor PostgreSQL com a password correta.
-2. Em **Databases**, crie a base `mar_e_moveis_shop` caso ainda não exista.
-3. Use preferencialmente o utilizador `postgres` durante o desenvolvimento local.
-
-O erro `Authentication failed against database server` não é um erro do código: significa que o utilizador/password dentro de `DATABASE_URL` não coincide com o PostgreSQL local.
-
-## 3. Criar o `.env` sem erros de codificação
-
-Na raiz do projeto, abra PowerShell e execute:
+## Atualizar num único bloco
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\configurar-env.ps1
+cd D:\mar-e-moveis-shop
+powershell -ExecutionPolicy Bypass -File .\scripts\atualizar.ps1
 ```
 
-O script pede a password PostgreSQL, codifica caracteres especiais e cria também `NEXTAUTH_SECRET` e `CRON_SECRET`.
+O script:
 
-## 4. Validar tudo num único bloco
+1. move backups antigos do `.env` para uma pasta externa;
+2. elimina caches locais;
+3. executa `npm ci`;
+4. formata e valida o schema Prisma;
+5. aplica as alterações à base de desenvolvimento;
+6. gera o Prisma Client;
+7. cria/atualiza dados fictícios;
+8. valida TypeScript;
+9. executa o build.
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\verificar-projeto.ps1
-```
+O resultado fica em `atualizacao.log`, que é ignorado pelo Git.
 
-Esse script usa o `package-lock.json` para instalar versões exatas, valida o schema, gera o Prisma Client, cria a migração, executa o seed, verifica TypeScript e compila o projeto.
-
-## 5. Arrancar
+## Arrancar
 
 ```powershell
 npm run dev
 ```
 
-Abrir: `http://localhost:3004`
+Abrir `http://localhost:3004`.
 
-Se aparecer `EADDRINUSE`, existe outro processo na porta 3004:
+Se a porta estiver ocupada:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\libertar-porta-3004.ps1
 npm run dev
 ```
 
-Em alternativa, sem terminar o processo existente:
+Ou usar temporariamente:
 
 ```powershell
 npm run dev:alt
 ```
 
-Nesse caso abra `http://localhost:3005` e altere temporariamente `NEXTAUTH_URL` e `NEXT_PUBLIC_SITE_URL` no `.env` para a porta 3005.
+## Produção
 
-## Conta administrativa de desenvolvimento
+Antes de produção:
 
-- Email: `admin@marmoveis.pt`
-- Password inicial: `admin123`
-
-Troque esta password antes de publicar o projeto.
+- definir `SEED_DEMO=false`;
+- remover ou trocar todas as contas fictícias;
+- configurar credenciais reais através de um gestor de segredos;
+- testar pagamentos e webhooks em ambiente de teste;
+- fazer backup da base antes de migrações;
+- validar legalmente textos, cookies, RGPD, entregas e faturação.

@@ -1,0 +1,21 @@
+name: Melhoria
+description: Propor uma funcionalidade ou alteracao
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Necessidade
+      description: Que problema deve ser resolvido?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposta
+      description: Como deveria funcionar?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Criterios de aceitacao

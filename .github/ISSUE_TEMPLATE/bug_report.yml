@@ -1,0 +1,26 @@
+name: Erro
+description: Registar um comportamento incorreto
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Descricao
+      description: O que aconteceu e o que deveria acontecer?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para reproduzir
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs relevantes
+      description: Nao incluir passwords, tokens ou dados pessoais.
+      render: shell
+  - type: input
+    id: commit
+    attributes:
+      label: Commit ou versao
