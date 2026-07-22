@@ -41,6 +41,10 @@ const produtoSchema = z.object({
   categoriaId: z.string(),
   preco: z.number().positive(),
   stock: z.number().int().min(0).default(0),
+  material: z.string().optional(),
+  largura_cm: z.number().int().positive().optional(),
+  altura_cm: z.number().int().positive().optional(),
+  profundidade_cm: z.number().int().positive().optional(),
   imagens: z.array(z.string()).default([]),
 });
 

@@ -100,3 +100,8 @@ e preencher apenas credenciais de teste antes da ativação real.
 - Consultar [`SECURITY.md`](SECURITY.md) antes de reportar problemas.
 - O projeto é privado e proprietário. Consultar [`LICENSE`](LICENSE).
 - Nunca colocar credenciais, dados de clientes ou documentos reais no Git.
+
+
+## Gestão de catálogo
+
+Consulte [Gestão de produtos e imagens](docs/GESTAO-DE-PRODUTOS-E-IMAGENS.md) para criar produtos, preparar fotografias e organizar descrições.

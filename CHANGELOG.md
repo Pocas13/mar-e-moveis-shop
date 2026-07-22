@@ -30,3 +30,12 @@ O projeto segue, quando aplicavel, [Semantic Versioning](https://semver.org/).
 - Inicializacao tardia do Stripe para permitir builds sem credenciais.
 - Uso invalido da utility `group` dentro de `@apply`.
 - Tratamento de avisos npm no PowerShell sem falsos erros.
+
+## Em desenvolvimento
+
+- Criadas páginas próprias para todas as divisões e respetivas subdivisões.
+- Criado catálogo completo com filtro por categoria.
+- Criada página de novidades com paginação de 12 produtos.
+- A página inicial passou a apresentar apenas uma seleção e a encaminhar para páginas próprias.
+- Formulário de produto atualizado para até 8 imagens, ordenação e remoção.
+- Upload local validado para JPG, PNG e WebP, com limite de 8 MB.

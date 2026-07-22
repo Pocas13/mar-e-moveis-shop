@@ -16,6 +16,7 @@ export default async function EditarProdutoPage({ params }: { params: Promise<{ 
         produtoExistente={{
           id: produto.id,
           nome: produto.nome,
+          slug: produto.slug,
           descricao: produto.descricao,
           sku: produto.sku,
           categoriaId: produto.categoriaId,

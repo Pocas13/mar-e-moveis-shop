@@ -22,8 +22,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <header className="sticky top-0 z-40 border-b border-calcario-200 bg-calcario-50/95 backdrop-blur-xl">
       <nav className="container-site flex min-h-20 items-center justify-between gap-5">
         <Link href="/" aria-label="Página inicial"><BrandMark /></Link>
-        <div className="hidden items-center gap-7 text-sm font-semibold lg:flex"><Link href="/#divisoes" className="hover:text-barro-600">Divisões</Link><Link href="/#novidades" className="hover:text-barro-600">Novidades</Link><Link href="/#inspiracao" className="hover:text-barro-600">Inspiração</Link><Link href="/entregas" className="hover:text-barro-600">Entregas</Link></div>
-        <div className="flex items-center gap-3 text-sm font-semibold"><Link href="/#novidades" className="hidden rounded-full border border-calcario-300 px-4 py-2 sm:inline-flex">Pesquisar</Link><Link href="/carrinho" className="rounded-full bg-grafite-900 px-4 py-2 text-white hover:bg-barro-600">Carrinho</Link><NavSessao session={session} /></div>
+        <div className="hidden items-center gap-7 text-sm font-semibold lg:flex"><Link href="/divisoes" className="hover:text-barro-600">Divisões</Link><Link href="/novidades" className="hover:text-barro-600">Novidades</Link><Link href="/#inspiracao" className="hover:text-barro-600">Inspiração</Link><Link href="/entregas" className="hover:text-barro-600">Entregas</Link></div>
+        <div className="flex items-center gap-3 text-sm font-semibold"><Link href="/produtos" className="hidden rounded-full border border-calcario-300 px-4 py-2 sm:inline-flex">Produtos</Link><Link href="/carrinho" className="rounded-full bg-grafite-900 px-4 py-2 text-white hover:bg-barro-600">Carrinho</Link><NavSessao session={session} /></div>
       </nav>
     </header>
     <main>{children}</main>
