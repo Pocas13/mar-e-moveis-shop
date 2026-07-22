@@ -19,7 +19,8 @@
     "seed": "tsx prisma/seed.ts",
     "seed:demo": "tsx prisma/seed.ts",
     "check": "prisma validate && prisma generate && tsc --noEmit && next build",
-    "update:windows": "powershell -ExecutionPolicy Bypass -File .\\scripts\\atualizar.ps1"
+    "update:windows": "powershell -ExecutionPolicy Bypass -File .\\scripts\\atualizar.ps1",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build"
   },
   "dependencies": {
     "@prisma/client": "5.17.0",
@@ -44,7 +45,6 @@
     "typescript": "5.5.4"
   },
   "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=10.0.0"
+    "node": "20.x"
   }
 }
